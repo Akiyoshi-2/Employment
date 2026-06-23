@@ -21,7 +21,7 @@ namespace Input
 	void Draw();
 	void Fin();
 
-	bool IsInputkey(InputKey key);
+	bool IsInputKey(InputKey key);
 
 	bool IsTriggerKey(InputKey key);
 }

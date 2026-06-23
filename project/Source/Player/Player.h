@@ -15,22 +15,21 @@ public:
 	void Draw();
 	void Fin();
 
+	enum PlayerGravityDir
+	{
+		UP,
+		DOWN,
+		LEFT,
+		RIGHT,
+	};
+
 private:
 	int m_Handle;
 	VECTOR m_Pos;
 	VECTOR m_Move;
 
 	int m_HP;
-	int m_DeadTimer;
-	bool IsDead;
 
-	bool isRespawn;
-
-	bool active;
-	bool isTurn;
-	bool isAir;
-	bool gravityDir;
-
-
+	bool m_isTurn;
 };
 
