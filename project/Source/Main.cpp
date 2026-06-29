@@ -1,10 +1,13 @@
 #include "DxLib.h"
+#include "../Source/Input/Input.h"
+#include "../Source/Scene/SceneManager.h"
 
 #define SCREEN_WIDTH 1600
 #define SCREEN_HEIGHT 900
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
+	// ウィンドウモードON
 	ChangeWindowMode(TRUE);
 
 	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);
@@ -16,16 +19,36 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	// シーンマネージャー
+	SceneManager::CretateInstance();
+	SceneManager* sceneManager = SceneManager::GetInstance();
+	sceneManager->Init();
+
+	Input::Init();
+
+	// メインループ
 	while (ProcessMessage() >= 0)
 	{
 		Sleep(1);
 
 		ClearDrawScreen();
 
+		// 入力更新
+		Input::Update();
+
+		// シーン更新
+		sceneManager->Update();
+
+		Input::Draw();
+
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;
 
 		ScreenFlip();
 	}
+
+	SceneManager::DeleteInstance();
+
+	Input::Fin();
 
 	DxLib_End();
 
