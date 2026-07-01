@@ -15,9 +15,9 @@ PlayerManager::~PlayerManager()
 
 void PlayerManager::CreatePlayer()
 {
-	if (!m_Player)
+	if (m_Player == nullptr)
 	{
-		m_Player = new Player;
+		m_Player = new Player();
 	}
 }
 

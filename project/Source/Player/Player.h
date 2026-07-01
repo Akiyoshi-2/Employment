@@ -1,5 +1,6 @@
 #pragma once
 #include "DxLib.h"
+#include "../Bullet/BulletManager.h"
 
 class Player
 {
@@ -23,13 +24,19 @@ public:
 		RIGHT,
 	};
 
+	void SetBulletManager(BulletManager* manager);
+
 private:
 	int m_Handle;
+	int m_HP;
 	VECTOR m_Pos;
 	VECTOR m_Move;
-
-	int m_HP;
-
+	float m_Size;
 	bool m_isTurn;
+
+	float m_BulletCoolTime;
+	float m_BulletInterval;
+
+	BulletManager* m_BulletManager;
 };
 

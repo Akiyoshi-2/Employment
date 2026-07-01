@@ -28,6 +28,24 @@
     <ClCompile Include="Source\Scene\GameOver\GameOver.cpp">
       <Filter>Source\Scene\GameOverScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletManager.cpp">
+      <Filter>Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletBase.cpp">
+      <Filter>Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\PlayerBullet\PlayerBullet.cpp">
+      <Filter>Source\Bullet\PlayerBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera\CameraManager.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera\CameraBase.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera\Camera.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -50,6 +68,15 @@
     </Filter>
     <Filter Include="Source\Scene\GameOverScene">
       <UniqueIdentifier>{e1fd4e33-d4b6-4160-8f61-a88f6259b092}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Bullet">
+      <UniqueIdentifier>{ebb8e690-695a-48b7-a372-c80f847f744b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Bullet\PlayerBullet">
+      <UniqueIdentifier>{9b4d06e2-d0ee-4879-afb5-f0c30f47565e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Camera">
+      <UniqueIdentifier>{d3d65989-a6e6-4807-a4d0-ecef26327dcd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +106,24 @@
     </ClInclude>
     <ClInclude Include="Source\Scene\GameOver\GameOver.h">
       <Filter>Source\Scene\GameOverScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bullet\BulletManager.h">
+      <Filter>Source\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bullet\BulletBase.h">
+      <Filter>Source\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bullet\PlayerBullet\PlayerBullet.h">
+      <Filter>Source\Bullet\PlayerBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera\CameraManager.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera\CameraBase.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera\Camera.h">
+      <Filter>Source\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -30,7 +30,7 @@ void TitleScene::Start()
 
 void TitleScene::Step()
 {
-	if (Input::IsTriggerKey(Input::KEY_Z));
+	if (Input::IsTriggerKey(Input::KEY_Z))
 	{
 		SceneManager::GetInstance()->ChangeScene(PLAY);
 	}
