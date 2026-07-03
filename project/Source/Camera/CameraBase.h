@@ -14,12 +14,13 @@ public:
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 	virtual void Fin() = 0;
+
+	VECTOR GetTarget() { return m_Target; }
+
+	void SetTarget(VECTOR target) { m_Target = target; }
+
+protected:
+	VECTOR m_Pos;
+	VECTOR m_Target;
+	VECTOR m_UpVec;
 };
-
-CameraBase::CameraBase()
-{
-}
-
-CameraBase::~CameraBase()
-{
-}

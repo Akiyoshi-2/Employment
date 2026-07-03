@@ -1,11 +1,14 @@
 #pragma once
+#include "DxLib.h"
 #include "CameraBase.h"
 
-class Camera : public CameraBase
+class Player;
+
+class FollowCamera : public CameraBase
 {
 public:
-	Camera();
-	~Camera();
+	FollowCamera();
+	~FollowCamera();
 
 	void Init() override;
 	void Load() override;
@@ -15,10 +18,12 @@ public:
 	void Draw() override;
 	void Fin() override;
 
-	void SetPosition(VECTOR pos);
-	void SetTarget(VECTOR target);
+	void SetTargetPos(VECTOR targetPos);
+
+	void SetOffset(VECTOR offset);
 
 private:
+	VECTOR m_TargetPos;
+	VECTOR m_Offset;
 
 };
-

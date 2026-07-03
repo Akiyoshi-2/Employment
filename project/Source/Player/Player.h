@@ -26,6 +26,8 @@ public:
 
 	void SetBulletManager(BulletManager* manager);
 
+	VECTOR GetPos() const { return m_Pos; }
+
 private:
 	int m_Handle;
 	int m_HP;

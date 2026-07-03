@@ -36,18 +36,26 @@ void PlayerBullet::Update()
     BulletBase::Update();
 
     // 画面外に出たら削除
-    if (m_Pos.x < -64 ||
-        m_Pos.x > BULLET_OUT_X + 64 ||
-        m_Pos.y < -64 ||
-        m_Pos.y > BULLET_OUT_Y + 64)
+   /* if (m_Pos.x < -64 || m_Pos.x > BULLET_OUT_X + 64 ||
+        m_Pos.y < -64 || m_Pos.y > BULLET_OUT_Y + 64)
     {
         SetDead();
-    }
+    }*/
 }
 
 void PlayerBullet::Draw()
 {
-    DrawTurnGraph((int)m_Pos.x, (int)m_Pos.y, m_Handle, TRUE);
+    DrawBillboard3D(
+        m_Pos,
+        0.5f,       // 画像中央(X)
+        0.5f,       // 画像中央(Y)
+        3.0f,       // サイズ
+        0.0f,       // 回転
+        m_Handle,
+        TRUE,
+        FALSE,      // 左右反転
+        FALSE       // 上下反転
+    );
 }
 
 void PlayerBullet::Fin()

@@ -3,6 +3,7 @@
 #include "../SceneManager.h"
 #include "../Play/PlayScene.h"
 #include "../../Input/Input.h"
+#include "../../Camera/CameraManager.h"
 
 
 TitleScene::TitleScene() : SceneBase()

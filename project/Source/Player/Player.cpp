@@ -3,25 +3,20 @@
 #include "../Input/Input.h"
 #include "../Bullet/PlayerBullet/PlayerBullet.h"
 
-#define MOVE_SPEED		3.0f
-
+#define MOVE_SPEED		2.0f
+#define BULLET_SPEED	5.0f
 
 
 Player::Player()
 {
-	m_Handle = 0;			// 画像ハンドル
-	m_HP = 10;				// HP
-	m_Size = 50.0;			// プレイヤーサイズ
+	m_Handle = 0;	// 画像ハンドル
+	m_HP = 10;		// HP
+	m_Size = 7.0;	// プレイヤーサイズ
 
-	m_Pos.x = 0;			// X座標
-	m_Pos.y = 0;			// Y座標
-	m_Pos.z = 0;			// Z座標
-
-	m_Move.x = 0;			// X移動量
-	m_Move.y = 0;			// Y移動量
-	m_Move.z = 0;			// Z移動量
+	m_Pos = VGet(0.0f, 0.0f, 0.0f);
+	m_Move = VGet(0.0f, 0.0f, 0.0f);
 	
-	m_isTurn = false;		// 
+	m_isTurn = false;
 
 	m_BulletManager = nullptr;
 
@@ -99,14 +94,14 @@ void Player::Update()
 			if (m_isTurn)
 			{
 				// 左向き
-				bullet->SetPos(m_Pos.x - 20, m_Pos.y - 7);
-				bullet->SetMove(-10.0f, 0.0f);
+				bullet->SetPos(m_Pos.x -1.0f, m_Pos.y);
+				bullet->SetMove(-BULLET_SPEED, 0.0f);
 			}
 			else
 			{
 				// 右向き
-				bullet->SetPos(m_Pos.x + 5, m_Pos.y - 7);
-				bullet->SetMove(10.0f, 0.0f);
+				bullet->SetPos(m_Pos.x + 1.0f, m_Pos.y);
+				bullet->SetMove(BULLET_SPEED, 0.0f);
 			}
 
 			m_BulletManager->AddBullet(bullet);
@@ -118,9 +113,19 @@ void Player::Update()
 }
 
 void Player::Draw()
-{	
-	DrawRotaGraph(m_Pos.x, m_Pos.y, 1.0, 0.0, m_Handle, TRUE, m_isTurn );
+{		
 	// 2D画像を3D空間に描画する
+	DrawBillboard3D(
+		m_Pos,
+		0.5f,          // 画像中央(X)
+		0.5f,          // 画像中央(Y)
+		m_Size,        // サイズ
+		0.0f,          // 回転
+		m_Handle,
+		TRUE,
+		m_isTurn,      // 左右反転
+		FALSE          // 上下反転
+	);
 }
 
 void Player::Fin()

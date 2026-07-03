@@ -45,11 +45,3 @@ private:
 
 	bool m_IsFollowing;	// ’Ç]’†
 };
-
-CameraManager::CameraManager()
-{
-}
-
-CameraManager::~CameraManager()
-{
-}

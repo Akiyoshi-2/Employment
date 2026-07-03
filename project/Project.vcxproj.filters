@@ -44,7 +44,10 @@
       <Filter>Source\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Source\Camera\Camera.cpp">
-      <Filter>Source\Camera</Filter>
+      <Filter>Source\Camera\FixedCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera\FollowCamera.cpp">
+      <Filter>Source\Camera\FollowCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +80,12 @@
     </Filter>
     <Filter Include="Source\Camera">
       <UniqueIdentifier>{d3d65989-a6e6-4807-a4d0-ecef26327dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Camera\FollowCamera">
+      <UniqueIdentifier>{670f86c9-5f4b-4b15-9f49-91719c2cc822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Camera\FixedCamera">
+      <UniqueIdentifier>{6418654e-902f-4de4-9906-f63cb3d5841f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +132,10 @@
       <Filter>Source\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Source\Camera\Camera.h">
-      <Filter>Source\Camera</Filter>
+      <Filter>Source\Camera\FixedCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera\FollowCamera.h">
+      <Filter>Source\Camera\FollowCamera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
