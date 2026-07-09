@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "../Source/Input/Input.h"
 #include "../Source/Scene/SceneManager.h"
+#include "../Source/FPS/FPS.h"
 
 #define SCREEN_WIDTH 1600
 #define SCREEN_HEIGHT 900
@@ -26,6 +27,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	Input::Init();
 
+	FPSSystem::Init();
+
 	// ƒƒCƒ“ƒ‹[ƒv
 	while (ProcessMessage() >= 0)
 	{
@@ -41,12 +44,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 		Input::Draw();
 
+		FPSSystem::Update();
+
+		FPSSystem::Draw();
+
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;
 
 		ScreenFlip();
 	}
 
 	SceneManager::DeleteInstance();
+
 
 	Input::Fin();
 

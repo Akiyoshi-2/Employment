@@ -49,6 +49,9 @@
     <ClCompile Include="Source\Camera\FollowCamera.cpp">
       <Filter>Source\Camera\FollowCamera</Filter>
     </ClCompile>
+    <ClCompile Include="Source\FPS\FPS.cpp">
+      <Filter>Source\FPS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -86,6 +89,9 @@
     </Filter>
     <Filter Include="Source\Camera\FixedCamera">
       <UniqueIdentifier>{6418654e-902f-4de4-9906-f63cb3d5841f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\FPS">
+      <UniqueIdentifier>{66279920-9f19-4015-99e5-31b640318007}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="Source\Camera\FollowCamera.h">
       <Filter>Source\Camera\FollowCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FPS\FPS.h">
+      <Filter>Source\FPS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
