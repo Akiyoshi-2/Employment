@@ -16,8 +16,8 @@ public:
     virtual void Draw();
     virtual void Fin();
 
-    void SetPos(float x, float y);
-    void SetMove(float x, float y);
+    void SetPos(float x, float y, float z);
+    void SetMove(float x, float y, float z);
 
     bool IsDead() const;
     void SetDead();

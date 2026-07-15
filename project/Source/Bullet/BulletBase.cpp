@@ -47,14 +47,14 @@ void BulletBase::Fin()
 {
 }
 
-void BulletBase::SetPos(float x, float y)
+void BulletBase::SetPos(float x, float y, float z)
 {
-    m_Pos = VGet(x, y, 0.0f);
+    m_Pos = VGet(x, y, z);
 }
 
-void BulletBase::SetMove(float x, float y)
+void BulletBase::SetMove(float x, float y, float z)
 {
-    m_Move = VGet(x, y, 0.0f);
+    m_Move = VGet(x, y, z);
 }
 
 bool BulletBase::IsDead() const

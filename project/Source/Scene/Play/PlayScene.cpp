@@ -7,10 +7,12 @@
 #include "../../Bullet/BulletManager.h"
 #include "../../Camera/CameraManager.h"
 #include "../../Camera/FollowCamera.h"
+#include "../../Floor/Floor.h"
 
 
 PlayScene::PlayScene()
 {
+	m_Floor = nullptr;
 }
 
 PlayScene::~PlayScene()
@@ -32,6 +34,10 @@ void PlayScene::Init()
 	CameraManager::GetInstance()->CreateCamera(FOLLOW_CAMERA);
 	CameraManager::GetInstance()->Init();
 
+	// 仮床
+	m_Floor = new Floor;
+	m_Floor->Init();
+
 	// バレットマネージャー
 	BulletManager::CreateInstance();
 	BulletManager::GetInstance()->Init();
@@ -47,6 +53,9 @@ void PlayScene::Load()
 	CameraManager::GetInstance()->Load();
 	// バレットロード
 	BulletManager::GetInstance()->Load();
+
+	// 仮床ロード
+	m_Floor->Load();
 }
 
 void PlayScene::Start()
@@ -57,6 +66,9 @@ void PlayScene::Start()
 	CameraManager::GetInstance()->Start();
 	// バレット開始
 	BulletManager::GetInstance()->Start();
+
+	// 仮床開始
+	m_Floor->Start();
 }
 
 void PlayScene::Step()
@@ -67,6 +79,9 @@ void PlayScene::Step()
 	CameraManager::GetInstance()->Step();
 	// バレットステップ
 	BulletManager::GetInstance()->Step();
+
+	// 仮床ステップ
+	m_Floor->Step();
 }
 
 void PlayScene::Update()
@@ -84,16 +99,26 @@ void PlayScene::Update()
 
 	CameraManager::GetInstance()->Update();
 	
+	// 仮床更新
+	m_Floor->Update();
+
 	// バレット更新
 	BulletManager::GetInstance()->Update();
 }
 
 void PlayScene::Draw()
 {
+	// 仮床描画
+	m_Floor->Draw();
+
+
 	// プレイヤー描画
 	PlayerManager::GetInstance()->Draw();
 	// カメラ描画
 	CameraManager::GetInstance()->Draw();
+
+	
+
 	// バレット描画
 	BulletManager::GetInstance()->Draw();
 }
@@ -106,4 +131,7 @@ void PlayScene::Fin()
 	CameraManager::DeleteInstance();
 	// バレット終了
 	BulletManager::DeleteInstance();
+
+	// 仮床削除
+	delete m_Floor;
 }

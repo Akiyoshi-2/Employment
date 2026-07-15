@@ -3,7 +3,7 @@
 #include "../Input/Input.h"
 #include "../Bullet/PlayerBullet/PlayerBullet.h"
 
-#define MOVE_SPEED		1.0f
+#define MOVE_SPEED		0.4f
 #define JUMP_POWER		12.0f
 #define BULLET_SPEED	5.0f
 
@@ -18,7 +18,7 @@ struct PlayerAnimParam
 Player::Player()
 {
 	m_HP = 10;		// HP
-	m_Size = 7.0;	// プレイヤーサイズ
+	m_Size = 7.5;	// プレイヤーサイズ
 
 	m_Pos = VGet(0.0f, 0.0f, 0.0f);
 	m_Move = VGet(0.0f, 0.0f, 0.0f);
@@ -30,7 +30,7 @@ Player::Player()
 	m_BulletManager = nullptr;
 
 	m_BulletCoolTime = 0.0f;
-	m_BulletInterval = 10.0f;
+	m_BulletInterval = 7.0f;
 }
 
 Player::~Player()
@@ -108,6 +108,7 @@ void Player::Update()
 {
 	m_Move.x = 0.0f;
 	m_Move.y = 0.0f;
+	m_Move.z = 0.0f;
 
 	if (Input::IsInputKey(Input::KEY_RIGHT))
 	{
@@ -123,12 +124,12 @@ void Player::Update()
 
 	if (Input::IsInputKey(Input::KEY_UP))
 	{
-		m_Move.z -= MOVE_SPEED;
+		m_Move.z += MOVE_SPEED;
 	}
 
 	if (Input::IsInputKey(Input::KEY_DOWN))
 	{
-		m_Move.z += MOVE_SPEED;
+		m_Move.z -= MOVE_SPEED;
 	}
 	if (Input::IsTriggerKey(Input::KEY_SPACE))
 	{
@@ -137,9 +138,10 @@ void Player::Update()
 
 	m_Pos.x += m_Move.x;
 	m_Pos.y += m_Move.y;
+	m_Pos.z += m_Move.z;
 
 	// アニメーション切り替え
-	if (m_Move.x != 0.0f || m_Move.y != 0.0f)
+	if (m_Move.x != 0.0f || m_Move.y != 0.0f || m_Move.z != 0.0f)
 	{
 		m_NowAnim = PlayerAnimationType::RUN;
 	}
@@ -169,14 +171,14 @@ void Player::Update()
 			if (m_isTurn)
 			{
 				// 左向き
-				bullet->SetPos(m_Pos.x -1.0f, m_Pos.y);
-				bullet->SetMove(-BULLET_SPEED, 0.0f);
+				bullet->SetPos(m_Pos.x -1.0f, m_Pos.y, m_Pos.z);
+				bullet->SetMove(-BULLET_SPEED, 0.0f, 0.0f);
 			}
 			else
 			{
 				// 右向き
-				bullet->SetPos(m_Pos.x + 1.0f, m_Pos.y);
-				bullet->SetMove(BULLET_SPEED, 0.0f);
+				bullet->SetPos(m_Pos.x + 1.0f, m_Pos.y, m_Pos.z);
+				bullet->SetMove(BULLET_SPEED, 0.0f, 0.0f);
 			}
 
 			m_BulletManager->AddBullet(bullet);

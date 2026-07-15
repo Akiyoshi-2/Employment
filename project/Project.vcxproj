@@ -147,6 +147,8 @@
     <ClCompile Include="Source\Camera\CameraBase.cpp" />
     <ClCompile Include="Source\Camera\CameraManager.cpp" />
     <ClCompile Include="Source\Camera\FollowCamera.cpp" />
+    <ClCompile Include="Source\Collision\CollisionAABB.cpp" />
+    <ClCompile Include="Source\Collision\CollisionManager.cpp" />
     <ClCompile Include="Source\Floor\Floor.cpp" />
     <ClCompile Include="Source\FPS\FPS.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
@@ -168,6 +170,9 @@
     <ClInclude Include="Source\Camera\CameraBase.h" />
     <ClInclude Include="Source\Camera\CameraManager.h" />
     <ClInclude Include="Source\Camera\FollowCamera.h" />
+    <ClInclude Include="Source\Collision\CollisionAABB.h" />
+    <ClInclude Include="Source\Collision\CollisionManager.h" />
+    <ClInclude Include="Source\Collision\CollisionParameter.h" />
     <ClInclude Include="Source\Floor\Floor.h" />
     <ClInclude Include="Source\FPS\FPS.h" />
     <ClInclude Include="Source\Input\Input.h" />
