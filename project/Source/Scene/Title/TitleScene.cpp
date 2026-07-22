@@ -45,6 +45,7 @@ void TitleScene::Update()
 void TitleScene::Draw()
 {
 	DrawString(0, 0, "タイトルシーン", GetColor(255, 255, 255));
+	DrawString(0, 20, "Zキーでゲームシーン", GetColor(255, 255, 255));
 }
 
 void TitleScene::Fin()

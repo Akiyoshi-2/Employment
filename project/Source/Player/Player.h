@@ -2,6 +2,9 @@
 #include "DxLib.h"
 #include "../Bullet/BulletManager.h"
 #include "../Animation/Animation.h"
+#include "../Collision/CollisionAABB.h"
+
+class Floor;
 
 class Player
 {
@@ -41,12 +44,23 @@ public:
 
 	VECTOR GetPos() const { return m_Pos; }
 
+	void SetFloor(Floor* floor);
+
+public:
+	CollisionAABB* GetCollision()
+	{
+		return &m_Collision;
+	}
+
 private:
 	int m_HP;
 	VECTOR m_Pos;
 	VECTOR m_Move;
 	float m_Size;
 	bool m_isTurn;
+	bool m_IsGround;
+
+	PlayerGravityDir m_GravityDir;
 
 	float m_BulletCoolTime;
 	float m_BulletInterval;
@@ -55,5 +69,9 @@ private:
 	PlayerAnimationType m_NowAnim;
 
 	BulletManager* m_BulletManager;
+
+	Floor* m_Floor;
+
+	CollisionAABB m_Collision;
 };
 

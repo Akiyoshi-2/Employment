@@ -2,6 +2,7 @@
 #include "PlayScene.h"
 #include "../SceneManager.h"
 #include "../../Input/Input.h"
+#include "../../Collision/CollisionManager.h"
 #include "../../Player/Player.h"
 #include "../../Player/PlayerManager.h"
 #include "../../Bullet/BulletManager.h"
@@ -22,21 +23,35 @@ PlayScene::~PlayScene()
 
 void PlayScene::Init()
 {
+	// コリジョンマネージャー生成
+	CollisionManager::CreateInstance();
+	
+	// 仮床
+	m_Floor = new Floor;
+	m_Floor->Init();
+
+
 	// プレイヤーマネージャー
 	PlayerManager::CreateInstance();
 	PlayerManager* playerManager = PlayerManager::GetInstance();
 
 	playerManager->CreatePlayer();
+
+	Player* player = playerManager->GetPlayer();
+
+	if (player)
+	{
+		player->Init();
+
+		player->SetFloor(m_Floor);
+	}
+
 	playerManager->Init();
 
 	// カメラマネージャー
 	CameraManager::CreateInstance();
 	CameraManager::GetInstance()->CreateCamera(FOLLOW_CAMERA);
 	CameraManager::GetInstance()->Init();
-
-	// 仮床
-	m_Floor = new Floor;
-	m_Floor->Init();
 
 	// バレットマネージャー
 	BulletManager::CreateInstance();
@@ -116,11 +131,11 @@ void PlayScene::Draw()
 	PlayerManager::GetInstance()->Draw();
 	// カメラ描画
 	CameraManager::GetInstance()->Draw();
-
-	
-
 	// バレット描画
 	BulletManager::GetInstance()->Draw();
+
+	// 当たり判定描画
+	CollisionManager::GetInstance()->Draw();
 }
 
 void PlayScene::Fin()
@@ -129,6 +144,10 @@ void PlayScene::Fin()
 	PlayerManager::DeleteInstace();
 	// カメラ終了
 	CameraManager::DeleteInstance();
+
+	// コリジョンマネージャー削除
+	CollisionManager::DeleteInstance();
+
 	// バレット終了
 	BulletManager::DeleteInstance();
 
